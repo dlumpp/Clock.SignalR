@@ -5,7 +5,7 @@ namespace Clock.SignalR.Server
 {
     public class Ticker : IDisposable
     {
-        public event Action OnTick;
+        public event Action? OnTick;
 
         private readonly Timer timer;
         private readonly TimeSpan interval = TimeSpan.FromSeconds(1);
@@ -26,7 +26,7 @@ namespace Clock.SignalR.Server
             timer.Change(negOneMs, negOneMs);
         }
 
-        private void DoTick(object state)
+        private void DoTick(object? state)
         {
             OnTick?.Invoke();
             Start();
